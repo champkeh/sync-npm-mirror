@@ -1,6 +1,6 @@
 import { cac } from 'cac'
 import {syncNpmMirrorPackage} from './index'
-import pkg from '../package.json'
+const pkg = require('../package.json')
 
 const cli = cac('sync-npm-mirror')
 
