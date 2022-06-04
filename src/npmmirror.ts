@@ -86,7 +86,7 @@ function getVersion(logUrl: string): Promise<string> {
             if (resp.status === 200) {
                 const matched = resp.data.match(/"version":"(?<version>\d+\.\d+\.\d+)"/)
                 if (matched && matched.groups && matched.groups.version)
-                    resolve('v' + matched.groups.version)
+                    resolve(matched.groups.version)
             }
             resolve('unknown')
         }).catch(() => {
