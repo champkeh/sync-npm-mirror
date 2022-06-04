@@ -4,8 +4,8 @@ const pkg = require('../package.json')
 
 const cli = cac('sync-npm-mirror')
 
-cli.command('[...packageNames]', 'sync packages in npm mirror')
-    .option('--timeout <timeout>', 'timeout in seconds', {
+cli.command('[...packageNames]', 'sync packages in npm mirror(taobao)')
+    .option('--timeout <timeout>', 'timeout in seconds for each package', {
         default: 30
     })
     .action((pkgNames, options) => {
