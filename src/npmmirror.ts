@@ -3,7 +3,7 @@ import {sleep} from "./utils";
 
 interface NpmMirrorSyncStatus {
     ok: boolean
-    logId?: string
+    logId: string
 }
 
 interface NpmMirrorCheckSyncStatusResponse {
