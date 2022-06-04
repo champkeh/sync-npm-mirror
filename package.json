@@ -1,21 +1,12 @@
 {
   "name": "sync-npm-mirror",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "同步npm镜像站上面的包",
-  "main": "dist/index.js",
   "scripts": {
     "dev": "ts-node src/cli.ts",
     "build": "tsc",
     "prepublishOnly": "npm run build"
   },
-  "bin": {
-    "sync-npm-mirror": "bin/sync-npm-mirror.js"
-  },
-  "files": [
-    "dist",
-    "bin",
-    "types"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/champkeh/sync-npm-mirror.git"
@@ -27,7 +18,16 @@
     "sync npm mirror",
     "npm mirror sync"
   ],
-  "author": "champkeh",
+  "main": "dist/index.js",
+  "bin": {
+    "sync-npm-mirror": "bin/sync-npm-mirror.js"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "types"
+  ],
+  "author": "champion.ge@gmail.com",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/champkeh/sync-npm-mirror/issues"

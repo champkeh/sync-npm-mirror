@@ -11,9 +11,9 @@ function createSyncTask(pkg: string, timeout: number) {
     return sync(spinner, pkg).then(logId => {
         return checkSyncStatus(spinner, pkg, logId, timeout)
     }).then(() => {
-        spinner.succeed(`sync success (${pkg})`)
+        spinner.succeed(`Sync success (${pkg})`)
     }).catch(e => {
-        spinner.fail(`sync failed (${pkg}): ${e.message}`)
+        spinner.fail(`Sync failed (${pkg}): ${e.message}`)
         throw e
     })
 }
@@ -21,14 +21,14 @@ function createSyncTask(pkg: string, timeout: number) {
 /**
  * 同步 npmmirror.com 上的npm包
  * @param pkgName 包名
- * @param timeout 超时时间，单位秒，默认:20
+ * @param timeout 超时时间，单位秒，默认:30
  */
-export function syncNpmMirrorPackage(pkgName: string | string[], timeout: number = 20) {
+export function syncNpmMirrorPackage(pkgName: string | string[], timeout: number = 30) {
     if (!Array.isArray(pkgName)) {
         pkgName = [pkgName]
     }
 
-    console.log('begin sync packages for', pkgName)
+    console.log('Begin sync packages for', pkgName)
 
     let success = 0
     let fail = 0
@@ -45,6 +45,6 @@ export function syncNpmMirrorPackage(pkgName: string | string[], timeout: number
     })
 
     taskQueue.then(() => {
-        console.log(`Success: ${success}\nFail: ${fail}\n`)
+        console.log(`\n===================\nSuccess: ${success}\nFail: ${fail}\n`)
     })
 }

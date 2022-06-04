@@ -5,10 +5,6 @@
 > 另外，我平时也会发布一些npm包，所以这个工具对我来说是一个刚需，于是就有了本项目。
 
 
-## ⚠️警告
-目前该包还没有发布到npm，所以以下内容可能会失败。
-
-
 ## 安装
 
 ### npm
@@ -28,7 +24,7 @@ pnpm add -D sync-npm-mirror
 
 ## 使用
 
-### with `scripts`
+### with `scripts` (推荐)
 Add `postpublish` script in `package.json` as follows:
 
 ```diff
@@ -38,7 +34,7 @@ Add `postpublish` script in `package.json` as follows:
 +    "postpublish": "sync-npm-mirror awesome-tools"
   },
   "devDependencies": {
-    "sync-npm-mirror": "^0.0.1"
+    "sync-npm-mirror": "x.y.z"
   },
 }
 ```

@@ -19,7 +19,7 @@ interface NpmMirrorCheckSyncStatusResponse {
  */
 export function sync(spinner: Ora, pkgName: string): Promise<string> {
     return new Promise((resolve, reject) => {
-        spinner.start(`start sync package: ${pkgName}`)
+        spinner.start(`Start sync package: ${pkgName}`)
         http.put(`https://registry-direct.npmmirror.com/${pkgName}/sync?sync_upstream=true`).then(resp => {
             if (resp.status === 201) {
                 try {
