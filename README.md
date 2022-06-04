@@ -1,4 +1,4 @@
-# npm-mirror-sync
+# sync-npm-mirror
 同步npm镜像站
 
 > 本项目受[魔法哥](https://github.com/cssmagic/npm-mirror-sync/issues/2)的启发，但是关于实现方式我有自己的想法。<br/>
@@ -11,17 +11,17 @@
 
 ### npm
 ```shell
-npm install -D @champkeh/npm-mirror-sync
+npm install -D sync-npm-mirror
 ```
 
 ### yarn
 ```shell
-yarn add -D @champkeh/npm-mirror-sync
+yarn add -D sync-npm-mirror
 ```
 
 ### pnpm
 ```shell
-pnpm add -D @champkeh/npm-mirror-sync
+pnpm add -D sync-npm-mirror
 ```
 
 ## Usage
@@ -33,17 +33,17 @@ Add `postpublish` script in `package.json` as follows:
 {
   "name": "awesome-tools",
   "scripts": {
-+    "postpublish": "npm-mirror-sync awesome-tools"
++    "postpublish": "sync-npm-mirror awesome-tools"
   },
   "devDependencies": {
-    "@champkeh/npm-mirror-sync": "^0.0.1"
+    "sync-npm-mirror": "^0.0.1"
   },
 }
 ```
 
 ### with require
 ```js
-import {syncNpmMirrorPackage} from '@champkeh/npm-mirror-sync'
+import {syncNpmMirrorPackage} from 'sync-npm-mirror'
 
 syncNpmMirrorPackage('axios').then(console.log)
 ```

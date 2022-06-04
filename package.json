@@ -1,5 +1,5 @@
 {
-  "name": "@champkeh/npm-mirror-sync",
+  "name": "sync-npm-mirror",
   "version": "0.0.1",
   "description": "同步npm镜像站上面的包",
   "main": "index.js",
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/champkeh/npm-mirror-sync.git"
+    "url": "git+https://github.com/champkeh/sync-npm-mirror.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/champkeh/npm-mirror-sync/issues"
+    "url": "https://github.com/champkeh/sync-npm-mirror/issues"
   },
-  "homepage": "https://github.com/champkeh/npm-mirror-sync#readme",
+  "homepage": "https://github.com/champkeh/sync-npm-mirror#readme",
   "devDependencies": {
     "@types/node": "^17.0.38",
     "ts-node": "^10.8.0",
