@@ -10,8 +10,8 @@ function createSyncTask(pkg: string, timeout: number) {
     const spinner = ora()
     return sync(spinner, pkg).then(logId => {
         return checkSyncStatus(spinner, pkg, logId, timeout)
-    }).then(() => {
-        spinner.succeed(`Sync success (${pkg})`)
+    }).then((version) => {
+        spinner.succeed(`Sync success (${pkg}:${version})`)
     }).catch(e => {
         spinner.fail(`Sync failed (${pkg}): ${e.message}`)
         throw e
@@ -44,7 +44,7 @@ export function syncNpmMirrorPackage(pkgName: string | string[], timeout: number
         })
     })
 
-    taskQueue.then(() => {
+    return taskQueue.then(() => {
         console.log(`\n===================\nSuccess: ${success}\nFail: ${fail}\n`)
     })
 }

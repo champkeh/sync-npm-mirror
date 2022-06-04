@@ -44,10 +44,10 @@ Add `postpublish` script in `package.json` as follows:
 const { syncNpmMirrorPackage } = require("sync-npm-mirror")
 
 // sync single package
-syncNpmMirrorPackage('axios').then(console.log)
+syncNpmMirrorPackage('axios')
 
 // sync multi pakcage
-syncNpmMirrorPackage(['axios', 'express']).then(console.log)
+syncNpmMirrorPackage(['axios', 'express'])
 ```
 
 ### with `cli`(global，需要全局安装)

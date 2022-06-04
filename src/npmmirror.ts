@@ -10,6 +10,7 @@ interface NpmMirrorSyncStatus {
 interface NpmMirrorCheckSyncStatusResponse {
     ok: boolean
     syncDone: boolean
+    logUrl: string
 }
 
 /**
@@ -47,15 +48,15 @@ export function sync(spinner: Ora, pkgName: string): Promise<string> {
  * @param MAXCOUNT 最大请求数 (每秒一次)
  * @param count 当前请求数，不要传次参数
  */
-export function checkSyncStatus(spinner: Ora, pkg: string, logId: string, MAXCOUNT: number, count: number = 1): Promise<boolean> {
-    return new Promise<boolean>((resolve, reject) => {
+export function checkSyncStatus(spinner: Ora, pkg: string, logId: string, MAXCOUNT: number, count: number = 1): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
         spinner.text = `${count}/${MAXCOUNT} check sync status for ${pkg} (${logId})`
         http.get(`https://registry-direct.npmmirror.com/express/sync/log/${logId}`).then(resp => {
             if (resp.status === 200) {
                 try {
                     const result = JSON.parse(resp.data) as NpmMirrorCheckSyncStatusResponse
                     if (result.ok && result.syncDone) {
-                        resolve(true)
+                        return getVersion(result.logUrl).then(v => resolve(v))
                     } else {
                         if (count < MAXCOUNT) {
                             sleep(1000).then(() => {
@@ -71,6 +72,25 @@ export function checkSyncStatus(spinner: Ora, pkg: string, logId: string, MAXCOU
             } else {
                 reject(new Error('request failed'))
             }
+        })
+    })
+}
+
+/**
+ * 根据logUrl获取同步的版本
+ * @param logUrl
+ */
+function getVersion(logUrl: string): Promise<string> {
+    return new Promise(resolve => {
+        http.get(logUrl).then(resp => {
+            if (resp.status === 200) {
+                const matched = resp.data.match(/"version":"(?<version>\d+\.\d+\.\d+)"/)
+                if (matched && matched.groups && matched.groups.version)
+                    resolve('v' + matched.groups.version)
+            }
+            resolve('unknown')
+        }).catch(() => {
+            resolve('unknown')
         })
     })
 }
