@@ -56,7 +56,7 @@ export function checkSyncStatus(spinner: Ora, pkg: string, logId: string, MAXCOU
                 try {
                     const result = JSON.parse(resp.data) as NpmMirrorCheckSyncStatusResponse
                     if (result.ok && result.syncDone) {
-                        return getVersion(result.logUrl).then(v => resolve(v))
+                        return getVersion(result.logUrl, pkg).then(v => resolve(v))
                     } else {
                         if (count < MAXCOUNT) {
                             sleep(1000).then(() => {
@@ -64,6 +64,9 @@ export function checkSyncStatus(spinner: Ora, pkg: string, logId: string, MAXCOU
                             })
                         } else {
                             reject(new Error('timeout'))
+                            setTimeout(() => {
+                                console.log(`${pkg} logUrl is ${result.logUrl}`)
+                            })
                         }
                     }
                 } catch (e) {
@@ -79,14 +82,33 @@ export function checkSyncStatus(spinner: Ora, pkg: string, logId: string, MAXCOU
 /**
  * 根据logUrl获取同步的版本
  * @param logUrl
+ * @param pkg
  */
-function getVersion(logUrl: string): Promise<string> {
+function getVersion(logUrl: string, pkg: string): Promise<string> {
     return new Promise(resolve => {
         http.get(logUrl).then(resp => {
             if (resp.status === 200) {
                 const matched = resp.data.match(/"version":"(?<version>\d+\.\d+\.\d+)"/)
                 if (matched && matched.groups && matched.groups.version)
                     resolve(matched.groups.version)
+            }
+            getVersionLatest(pkg).then(resolve)
+        }).catch(() => {
+            resolve('unknown')
+        })
+    })
+}
+
+/**
+ * 获取 npmmirror 上的最新版本
+ * @param pkg
+ */
+function getVersionLatest(pkg: string): Promise<string> {
+    return new Promise(resolve => {
+        http.get(`https://registry.npmmirror.com/${pkg}`).then(resp => {
+            if (resp.status === 200) {
+                const version = JSON.parse(resp.data)['dist-tags']['latest']
+                resolve(version)
             }
             resolve('unknown')
         }).catch(() => {
