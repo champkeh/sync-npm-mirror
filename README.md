@@ -9,7 +9,7 @@
 目前该包还没有发布到npm，所以以下内容可能会失败。
 
 
-## Install
+## 安装
 
 ### npm
 ```shell
@@ -26,7 +26,7 @@ yarn add -D sync-npm-mirror
 pnpm add -D sync-npm-mirror
 ```
 
-## Usage
+## 使用
 
 ### with `scripts`
 Add `postpublish` script in `package.json` as follows:
@@ -54,12 +54,12 @@ syncNpmMirrorPackage('axios').then(console.log)
 syncNpmMirrorPackage(['axios', 'express']).then(console.log)
 ```
 
-### with `cli`(local)
-```shell
-npx sync-npm-mirror axios
-```
-
-### with `cli`(global)
+### with `cli`(global，需要全局安装)
 ```shell
 sync-npm-mirror axios
+```
+
+### 支持同时更新多个包
+```shell
+sync-npm-mirror axios express koa
 ```
