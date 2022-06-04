@@ -1,5 +1,5 @@
 {
-  "name": "npm-mirror-sync",
+  "name": "@champkeh/npm-mirror-sync",
   "version": "0.0.1",
   "description": "同步npm镜像站上面的包",
   "main": "index.js",
