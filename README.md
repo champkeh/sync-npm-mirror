@@ -41,7 +41,7 @@ Add `postpublish` script in `package.json` as follows:
 
 ### with `require`
 ```js
-import {syncNpmMirrorPackage} from 'sync-npm-mirror'
+const { syncNpmMirrorPackage } = require("sync-npm-mirror")
 
 // sync single package
 syncNpmMirrorPackage('axios').then(console.log)
@@ -59,3 +59,8 @@ sync-npm-mirror axios
 ```shell
 sync-npm-mirror axios express koa
 ```
+
+## 额外说明
+由于依赖中的脚本无法获取到使用它的包名，所以需要在参数中手动指定你要同步的包名，也就是在`postpublish`脚本中指定包名作为`sync-npm-mirror`命令的参数。
+
+参考上面的推荐用法。

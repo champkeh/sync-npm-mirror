@@ -1,6 +1,5 @@
 import { cac } from 'cac'
 import {syncNpmMirrorPackage} from './index'
-import {resolveTargetPackage} from "./utils";
 const pkg = require('../package.json')
 
 const cli = cac('sync-npm-mirror')
@@ -11,9 +10,9 @@ cli.command('[...packageNames]', 'sync packages in npm mirror')
     })
     .action((pkgNames, options) => {
         if (pkgNames.length === 0) {
-            const pkg = resolveTargetPackage(__dirname)
-            pkgNames.push(pkg)
+            throw new Error('sync-npm-mirror require at least one pkg name as argument')
         }
+
         syncNpmMirrorPackage(pkgNames, options.timeout)
     })
 
