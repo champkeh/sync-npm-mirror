@@ -1,11 +1,12 @@
 {
   "name": "sync-npm-mirror",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "同步npm镜像站上面的包",
   "scripts": {
     "dev": "ts-node src/cli.ts",
     "build": "tsc",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "postpublish": "sync-npm-mirror"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
   "homepage": "https://github.com/champkeh/sync-npm-mirror#readme",
   "devDependencies": {
     "@types/node": "^17.0.38",
+    "sync-npm-mirror": "^0.1.4",
     "ts-node": "^10.8.0",
     "typescript": "^4.7.2"
   },
