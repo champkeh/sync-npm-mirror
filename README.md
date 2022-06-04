@@ -1,4 +1,11 @@
 # sync-npm-mirror
+
+<p align="left">
+<a href="https://npmjs.com/package/sync-npm-mirror"><img src="https://img.shields.io/npm/v/sync-npm-mirror.svg" alt="npm package"></a>
+<a href="https://nodejs.org/en/about/releases/"><img src="https://img.shields.io/node/v/sync-npm-mirror.svg" alt="node compatibility"></a>
+</p>
+
+
 当你将npm包发布到npm官方仓库时，想要自动同步到npm淘宝镜像站，那么就用这个工具吧。
 
 > 本项目受[魔法哥](https://github.com/cssmagic/npm-mirror-sync/issues/2)的启发，但是关于实现方式我有自己的想法。<br/>

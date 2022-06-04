@@ -1,6 +1,8 @@
 {
   "name": "sync-npm-mirror",
   "version": "0.2.5",
+  "license": "MIT",
+  "author": "champkeh",
   "description": "同步npm镜像站上面的包",
   "scripts": {
     "dev": "ts-node src/cli.ts",
@@ -28,8 +30,9 @@
     "bin",
     "types"
   ],
-  "author": "champion.ge@gmail.com",
-  "license": "MIT",
+  "engines": {
+    "node": ">=10"
+  },
   "bugs": {
     "url": "https://github.com/champkeh/sync-npm-mirror/issues"
   },
