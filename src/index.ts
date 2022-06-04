@@ -11,7 +11,7 @@ function createSyncTask(pkg: string, timeout: number) {
     return sync(spinner, pkg).then(logId => {
         return checkSyncStatus(spinner, pkg, logId, timeout)
     }).then((version) => {
-        spinner.succeed(`Sync success (${pkg}:${version})`)
+        spinner.succeed(`Sync success (${pkg}@${version})`)
     }).catch(e => {
         spinner.fail(`Sync failed (${pkg}): ${e.message}`)
         throw e

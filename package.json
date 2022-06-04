@@ -1,6 +1,6 @@
 {
   "name": "sync-npm-mirror",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "同步npm镜像站上面的包",
   "scripts": {
     "dev": "ts-node src/cli.ts",
