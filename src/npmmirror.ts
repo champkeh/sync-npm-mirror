@@ -1,3 +1,4 @@
+import {type Ora} from 'ora';
 import http from "./http";
 import {sleep} from "./utils";
 
@@ -13,10 +14,12 @@ interface NpmMirrorCheckSyncStatusResponse {
 
 /**
  * 请求同步淘宝镜像上的`pkgName`包
+ * @param spinner
  * @param pkgName 包名
  */
-export function sync(pkgName: string): Promise<string> {
+export function sync(spinner: Ora, pkgName: string): Promise<string> {
     return new Promise((resolve, reject) => {
+        spinner.start(`start sync package: ${pkgName}`)
         http.put(`https://registry-direct.npmmirror.com/${pkgName}/sync?sync_upstream=true`).then(resp => {
             if (resp.status === 201) {
                 try {
@@ -38,13 +41,15 @@ export function sync(pkgName: string): Promise<string> {
 
 /**
  * 检查同步结果
- * @param logId
- * @param MAXCOUNT 最大请求数，默认10次(每秒一次)
+ * @param spinner
+ * @param pkg 包名
+ * @param logId 对应的logId
+ * @param MAXCOUNT 最大请求数 (每秒一次)
  * @param count 当前请求数，不要传次参数
  */
-export function checkSyncStatus(logId: string, MAXCOUNT: number = 10, count: number = 1): Promise<boolean> {
+export function checkSyncStatus(spinner: Ora, pkg: string, logId: string, MAXCOUNT: number, count: number = 1): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
-        console.log('check sync status for logId:', logId)
+        spinner.text = `${count}/${MAXCOUNT} check sync status for ${pkg} (${logId})`
         http.get(`https://registry-direct.npmmirror.com/express/sync/log/${logId}`).then(resp => {
             if (resp.status === 200) {
                 try {
@@ -54,7 +59,7 @@ export function checkSyncStatus(logId: string, MAXCOUNT: number = 10, count: num
                     } else {
                         if (count < MAXCOUNT) {
                             sleep(1000).then(() => {
-                                resolve(checkSyncStatus(logId, MAXCOUNT, count + 1))
+                                resolve(checkSyncStatus(spinner, pkg, logId, MAXCOUNT, count + 1))
                             })
                         } else {
                             reject(new Error('timeout'))

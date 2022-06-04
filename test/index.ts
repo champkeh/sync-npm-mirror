@@ -1,4 +1,3 @@
 import {syncNpmMirrorPackage} from '../src'
 
-
-syncNpmMirrorPackage('axios').then(console.log)
+syncNpmMirrorPackage(['axios', 'express', '@jzinfo/utils'], 3)
