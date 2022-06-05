@@ -3,9 +3,10 @@
 <p align="left">
 <a href="https://npmjs.com/package/sync-npm-mirror"><img src="https://img.shields.io/npm/v/sync-npm-mirror.svg" alt="npm package"></a>
 <a href="https://nodejs.org/en/about/releases/"><img src="https://img.shields.io/node/v/sync-npm-mirror.svg" alt="node compatibility"></a>
+<a href="https://github.com/champkeh/sync-npm-mirror/actions/workflows/publish-and-release.yml"><img src="https://github.com/champkeh/sync-npm-mirror/actions/workflows/publish-and-release.yml/badge.svg" alt="workflows status"></a>
 </p>
 
-当你将 npm 包发布到 npm 官方仓库时，想要自动同步到 npm 淘宝镜像站，那么就用这个工具吧。
+当你将自己开发的 npm 包发布到 npm 官方仓库时，想要自动同步到淘宝镜像站，那么就用这个工具吧。
 
 > 本项目受[魔法哥](https://github.com/cssmagic/npm-mirror-sync/issues/2)的启发，但是关于实现方式我有自己的想法。<br/>
 > 另外，我平时也会发布一些 npm 包，所以这个工具对我来说是一个刚需，于是就有了本项目。
