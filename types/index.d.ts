@@ -1,8 +1,8 @@
-interface Pkg {
+export interface Pkg {
     name: string
     version: string
 }
 
-interface CliOption {
+export interface CliOption {
     timeout: number
 }

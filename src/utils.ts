@@ -1,5 +1,6 @@
 import path from "path"
 import fs from "fs"
+import { Pkg } from "../types"
 
 export function sleep(duration: number) {
   return new Promise((resolve) => {

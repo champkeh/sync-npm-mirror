@@ -1,4 +1,5 @@
 import { cac } from "cac"
+import { Pkg, CliOption } from "../types"
 import { syncNpmMirrorPackage } from "./index"
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const pkg: Pkg = require("../package.json") as Pkg
