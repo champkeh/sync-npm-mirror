@@ -1,6 +1,6 @@
 {
   "name": "sync-npm-mirror",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "license": "MIT",
   "author": "champkeh",
   "description": "同步npm镜像站上面的包",
