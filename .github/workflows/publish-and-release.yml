@@ -1,56 +1,53 @@
 name: Publish and Release
 
-on: push
+on:
+  push:
+    branches:
+      - master
 
 jobs:
-  publish:
+  publish-and-release:
     if: github.repository == 'champkeh/sync-npm-mirror'
     runs-on: ubuntu-latest
     environment: Release
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 6
-
-      - name: Set node version to v16.x
+      - name: Setup node
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
           registry-url: https://registry.npmjs.org/
           cache: "pnpm"
 
+      - name: Check package is already publish?
+        uses: flood-io/is-published-on-npm@v1
+        id: is-published
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 6
+
       - name: Install deps
         run: pnpm install
 
       - name: Publish package
         run: npm publish
+        if: ${{ steps.is-published.outputs.published == 'false' }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-  release:
-    if: github.repository == 'champkeh/sync-npm-mirror'
-    runs-on: ubuntu-latest
-    needs: [publish]
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Get version
-        uses: tyankatsu0105/read-package-version-actions@v1
-        id: version
-
-      - name: Create Release for Tag
-        id: release_tag
+      - name: Create Release
+        id: release
         uses: actions/create-release@v1
+        if: ${{ steps.is-published.outputs.published == 'false' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ steps.version.outputs.version }}
-          release_name: v${{ steps.version.outputs.version }}
+          tag_name: v${{ steps.is-published.outputs.version }}
+          release_name: v${{ steps.is-published.outputs.version }}
           draft: false
           prerelease: false
-          body: |
