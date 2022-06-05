@@ -12,7 +12,7 @@
 
 ## demo
 
-[![asciicast](https://asciinema.org/a/2M8bzU5ka1kxS7UmldYINuulx.svg)](https://asciinema.org/a/2M8bzU5ka1kxS7UmldYINuulx)
+[![asciicast](https://asciinema.org/a/499462.svg)](https://asciinema.org/a/499462)
 
 ## 安装
 
