@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "========= 执行 pre-commit 校验 ========="
+npx --no-install lint-staged
