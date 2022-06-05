@@ -18,7 +18,7 @@ specifiers:
   ora: '5'
   prettier: ^2.6.2
   rimraf: ^3.0.2
-  sync-npm-mirror: ^0.3.2
+  sync-npm-mirror: ^0.3.5
   ts-node: ^10.8.0
   typescript: ^4.7.2
 
@@ -42,7 +42,7 @@ devDependencies:
   npm-run-all: 4.1.5
   prettier: 2.6.2
   rimraf: 3.0.2
-  sync-npm-mirror: 0.3.2
+  sync-npm-mirror: 0.3.5
   ts-node: 10.8.0_h77muqpegcwcauif74p6js2ti4
   typescript: 4.7.2
 
@@ -2500,8 +2500,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /sync-npm-mirror/0.3.2:
-    resolution: {integrity: sha512-owzR+xIafemzhuKzCMGc1QH2dok9wmZL3N+He1eToLPwVDJcwLc+GWTkflCBn2jCrrBruNHHWAY9j0UXgNBJQA==}
+  /sync-npm-mirror/0.3.5:
+    resolution: {integrity: sha512-WDX9fyjI04pGHHGaAyD4qadvozH+wDvl8iqtF0rSuhVGax+Dyu/4kN9J2fyYod7SNAHwNmtPY8OXfgJEG0iKCw==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
