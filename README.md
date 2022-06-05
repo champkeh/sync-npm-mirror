@@ -6,7 +6,7 @@
 <a href="https://github.com/champkeh/sync-npm-mirror/actions/workflows/publish-and-release.yml"><img src="https://github.com/champkeh/sync-npm-mirror/actions/workflows/publish-and-release.yml/badge.svg" alt="workflows status"></a>
 </p>
 
-当你将自己开发的 npm 包发布到 npm 官方仓库时，想要自动同步到淘宝镜像站，那么就用这个工具吧。
+当你将自己开发的 npm 包发布到 npm 官方仓库时，想要立即同步淘宝镜像站上面的版本，那么就可以使用这个工具自动完成同步工作。
 
 > 本项目受[魔法哥](https://github.com/cssmagic/npm-mirror-sync/issues/2)的启发，但是关于实现方式我有自己的想法。<br/>
 > 另外，我平时也会发布一些 npm 包，所以这个工具对我来说是一个刚需，于是就有了本项目。
@@ -39,7 +39,7 @@ pnpm add -D sync-npm-mirror
 
 ### with `scripts` (推荐)
 
-Add `postpublish` script in `package.json` as follows:
+在你需要同步的 npm 包的`package.json`中添加下面这个脚本：
 
 ```diff
 {
@@ -52,6 +52,12 @@ Add `postpublish` script in `package.json` as follows:
   },
 }
 ```
+
+这样，当你的包在发布到官方仓库之后，会立即执行`sync-npm-mirror awesome-tools`将这个包同步更新到淘宝镜像站。
+
+> ⚠️⚠️⚠️ 注意
+>
+> 上面的代码段中的`awesome-tools`为演示目的，需要替换成你自己的包名。
 
 ### with `require`
 
