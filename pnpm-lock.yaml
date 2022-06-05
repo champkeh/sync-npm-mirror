@@ -6,7 +6,7 @@ specifiers:
   cac: ^6.7.12
   ora: '5'
   rimraf: ^3.0.2
-  sync-npm-mirror: ^0.2.3
+  sync-npm-mirror: ^0.3.2
   ts-node: ^10.8.0
   typescript: ^4.7.2
 
@@ -18,7 +18,7 @@ dependencies:
 devDependencies:
   '@types/node': 17.0.38
   rimraf: 3.0.2
-  sync-npm-mirror: 0.2.3
+  sync-npm-mirror: 0.3.2
   ts-node: 10.8.0_h77muqpegcwcauif74p6js2ti4
   typescript: 4.7.2
 
@@ -356,8 +356,9 @@ packages:
     dependencies:
       has-flag: 4.0.0
 
-  /sync-npm-mirror/0.2.3:
-    resolution: {integrity: sha512-MsNs5yCoDpXhO0zyEug7Xt8NKloaHImHETfVps9qUM0YBtS4pM0NBfuJrTQLAglUoF3oAAyj8gYUESeWF6rlGA==}
+  /sync-npm-mirror/0.3.2:
+    resolution: {integrity: sha512-owzR+xIafemzhuKzCMGc1QH2dok9wmZL3N+He1eToLPwVDJcwLc+GWTkflCBn2jCrrBruNHHWAY9j0UXgNBJQA==}
+    engines: {node: '>=10'}
     hasBin: true
     dependencies:
       axios: 0.27.2
