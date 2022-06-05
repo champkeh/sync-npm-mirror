@@ -1,21 +1,24 @@
-import { cac } from 'cac'
-import {syncNpmMirrorPackage} from './index'
-const pkg = require('../package.json')
+import { cac } from "cac"
+import { syncNpmMirrorPackage } from "./index"
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const pkg: Pkg = require("../package.json") as Pkg
 
-const cli = cac('sync-npm-mirror')
+const cli = cac("sync-npm-mirror")
 
-cli.command('[...packageNames]', 'sync packages in npm mirror(taobao)')
-    .option('--timeout <timeout>', 'timeout in seconds for each package', {
-        default: 30
-    })
-    .action((pkgNames, options) => {
-        if (pkgNames.length === 0) {
-            throw new Error('sync-npm-mirror require at least one pkg name as argument')
-        }
+cli
+  .command("[...packageNames]", "sync packages in npm mirror(taobao)")
+  .option("--timeout <timeout>", "timeout in seconds for each package", {
+    default: 30,
+  })
+  .action(async (pkgNames: string[], options: CliOption) => {
+    if (pkgNames.length === 0) {
+      throw new Error(
+        "sync-npm-mirror require at least one pkg name as argument",
+      )
+    }
 
-        syncNpmMirrorPackage(pkgNames, options.timeout)
-    })
-
+    await syncNpmMirrorPackage(pkgNames, options.timeout)
+  })
 
 cli.help()
 cli.version(pkg.version)

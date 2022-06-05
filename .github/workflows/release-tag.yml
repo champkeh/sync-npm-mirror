@@ -28,4 +28,3 @@ jobs:
           draft: false
           prerelease: false
           body: |
-            

@@ -1,7 +1,7 @@
-import axios from 'axios'
+import axios from "axios"
 
 const http = new axios.Axios({
-    timeout: 0
+  timeout: 0,
 })
 
 export default http

@@ -1,0 +1,7 @@
+.cache
+.husky
+dist
+build
+node_modules
+types
+pnpm-lock.yaml

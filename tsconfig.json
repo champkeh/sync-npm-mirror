@@ -1,17 +1,13 @@
 {
-  "compilerOptions": {
-    "module": "CommonJS",
-    "target": "ES2015",
-    "esModuleInterop": true,
-    "rootDir": "./src",
-    "outDir": "./dist",
-    "strict": true,
-    "resolveJsonModule": true
-  },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "compilerOptions": {
+        "module": "CommonJS",
+        "target": "ES2015",
+        "esModuleInterop": true,
+        "rootDir": "./src",
+        "outDir": "./dist",
+        "strict": true,
+        "resolveJsonModule": true
+    },
+    "include": ["src/**/*", "types/**/*", "test/**/*.ts"],
+    "exclude": ["node_modules"]
 }
