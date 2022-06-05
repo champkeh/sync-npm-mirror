@@ -3,7 +3,7 @@
   "version": "0.3.7",
   "license": "MIT",
   "author": "champkeh",
-  "description": "同步npm镜像站上面的包",
+  "description": "自动同步npm淘宝镜像站上面的包",
   "scripts": {
     "dev": "ts-node src/cli.ts",
     "format": "prettier --write --ignore-unknown --no-editorconfig .",
